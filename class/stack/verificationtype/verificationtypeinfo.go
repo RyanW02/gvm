@@ -141,7 +141,7 @@ func (i *UninitializedVariableInfo) Read(cr *reader.ClassReader) (err error) {
 
 var ErrInvalidVerificationType = errors.New("no verification type with tag found")
 
-func NewVariableInfo(verificationType VerificationType) (info VerificationTypeInfo, err error) {
+func NewVerificationTypeInfo(verificationType VerificationType) (info VerificationTypeInfo, err error) {
 	switch verificationType {
 	case 0:
 		info = NewTopVariableInfo()

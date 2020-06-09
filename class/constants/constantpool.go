@@ -1,6 +1,8 @@
 package constants
 
-import "github.com/RyanW02/gvm/class/reader"
+import (
+	"github.com/RyanW02/gvm/class/reader"
+)
 
 type ConstantPool []ConstantInfo
 
@@ -27,5 +29,5 @@ func (p ConstantPool) Read(count uint16, cr *reader.ClassReader) (err error) {
 }
 
 func (p ConstantPool) GetUtf8(index uint16) *ConstantUtf8Info {
-	return p[index].(*ConstantUtf8Info)
+	return p[index - 1].(*ConstantUtf8Info)
 }

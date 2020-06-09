@@ -1,14 +1,13 @@
 package field
 
 import (
-	"github.com/RyanW02/gvm/class/access"
 	"github.com/RyanW02/gvm/class/attribute"
 	"github.com/RyanW02/gvm/class/constants"
 	"github.com/RyanW02/gvm/class/reader"
 )
 
 type Field struct {
-	AccessFlags     []access.AccessFlag
+	AccessFlags     uint16
 	NameIndex       uint16
 	DescriptorIndex uint16
 	AttributesCount uint16
@@ -20,9 +19,7 @@ func NewField() Field {
 }
 
 func (f *Field) Read(cr *reader.ClassReader, pool constants.ConstantPool) (err error) {
-	var flags uint16
-	flags, err = cr.ReadUint16()
-	f.AccessFlags = access.GetFlags(flags)
+	f.AccessFlags, err = cr.ReadUint16()
 
 	f.NameIndex, err = cr.ReadUint16()
 	f.DescriptorIndex, err = cr.ReadUint16()

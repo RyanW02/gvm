@@ -1,7 +1,6 @@
 package attribute
 
 import (
-	"fmt"
 	"github.com/RyanW02/gvm/class/constants"
 	"github.com/RyanW02/gvm/class/reader"
 )
@@ -20,7 +19,6 @@ func (a *Attribute) Read(cr *reader.ClassReader, pool constants.ConstantPool) (e
 	a.AttributeNameIndex, err = cr.ReadUint16()
 	a.AttributeLength, err = cr.ReadUint32()
 	a.Info, err = NewAttributeInfo(a.GetAttributeName(pool))
-	fmt.Println(a.GetAttributeName(pool))
 	err = a.Info.Read(cr, pool)
 	return
 }
